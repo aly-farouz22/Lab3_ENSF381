@@ -12,6 +12,19 @@ Description : A simple HTML file for form tag.
 
 <head>
     <title>Form Elements Demonstration</title>
+    <style>
+        #color-box {
+            width: 50px;
+            height: 30px;
+            border: none;
+            display: inline-block;
+            margin-right: 10px;
+            vertical-align: middle; 
+        }
+        #color-form {
+            border: none; /* Removed border */
+        }
+    </style>
 </head>
 
 <body>
@@ -23,6 +36,8 @@ Description : A simple HTML file for form tag.
             <!-- Add a label and input field for 'Name' here -->
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name"><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email"><br>
             <!-- Add a label and input field for 'Password' here, ensure to use the correct type for password fields -->
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password"><br>
@@ -58,6 +73,17 @@ Description : A simple HTML file for form tag.
             <!-- Add a label and input field for 'Birthday' here, use the appropriate type for date selection -->
             <label for="birthday">Birthday:</label><br>
             <input type="date" id="birthday" name="birthday"><br>
+            <fieldset id="color-form">
+                <label for="color-select">Favorite Color</label><br>
+                <select name="color" id="color-select">
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="orange">Orange</option>
+                </select>
+                <div id="color-box"></div>
+            </fieldset>
             <!-- Add a label and number input field for 'Quantity', set min to 1 and max to 5 -->
             <label for="quantity">Quantity (between 1 and 5):</label><br>
             <input type="number" id="quantity" name="quantity" min="1" max="5"><br>
@@ -83,7 +109,14 @@ Description : A simple HTML file for form tag.
             <input type="reset" value="Reset">
         </fieldset>
     </form>
-
+    <script>
+        function updateColor () {
+            var color = document.getElementById("color-select").value;
+            document.getElementById("color-box").style.backgroundColor = color; 
+        }
+        document.getElementById("color-select").addEventListener("change",updateColor)
+        updateColor();
+    </script>
 </body>
 
 </html>
